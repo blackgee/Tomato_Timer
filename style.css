@@ -1,0 +1,36 @@
+.navbar-item img {
+    width: 54px;
+    max-height: 11rem;
+}
+
+.image {
+    margin-right: 2rem;
+}
+
+.title.is-1 {
+    font-size: 6rem;
+    margin: 1rem 0;
+}
+
+.center {
+    text-align: center;
+    width: 410px;
+    margin: 3rem auto;
+}
+
+.button {
+    margin-right: 1rem;
+}
+
+.title.is-1 {
+    font-size: 6rem;
+    margin: 1rem auto;
+}
+
+.navbar-menu {
+    justify-content: center;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
