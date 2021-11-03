@@ -34,3 +34,7 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+.container{
+  display: grid;
+}
