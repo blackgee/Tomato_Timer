@@ -1,81 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cronometro Tomate</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cronometro Tomate</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="#">
-        <img src="tomato_logo.jpg" alt="tomato_logo" width="112" height="28">
-      </a>
-      <a class="navbar-burger" id="burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </a>
-    </div>
-    <div class="navbar-menu" id="nav-links">
-      <a class="navbar-item" href="">
-        Home
-      </a>
-      <a class="navbar-item" href="faq.html">
-        FAQ
-      </a>
-      <a class="navbar-item" href="">
-        Contact
-      </a>
-    </div>
-  </nav>
-
-  <section class="section is-large pt-0 pb-2">
-    <div class="container">
-      <div class="columns is-7 is-two-thirds is-centered ">
-        <figure class="image">
-          <img src="resized-image-Promo.jpeg" alt="">
-        </figure>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img
+            src="tomato_logo.jpg"
+            alt="tomato_logo"
+            width="112"
+            height="28"
+          />
+        </a>
+        <a class="navbar-burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
       </div>
-      <section class="center">
-        <div class="columns is-7 is-two-thirds">
-          <button class="button is-primary" id="tomato">Tomato</button>
-          <button class="button is-danger" id="break">Break</button>
-          <button class="button is-warning" id="longBreak">Long Break</button>
-          <button class="button" id="pauseBtn">Pause</button>
-        </div>
-        <div class="columns">
-          <h1 class="has-background-white title is-1" id="countdown"> 25:00 </h1>
+      <div class="navbar-menu" id="nav-links">
+        <a class="navbar-item" href=""> Home </a>
+        <a class="navbar-item" href="faq.html"> FAQ </a>
+        <a class="navbar-item" href=""> Contact </a>
+      </div>
+    </nav>
+
+    <!-- old style -->
+    <div class="columns is-desktop center">
+      <section class="section is-medium pt-0 pb-2">
+        <div class="container">
+          <div class="columns is-desktop is-7 is-two-thirds is-centered">
+            <figure class="image">
+              <img src="resized-image-Promo.jpeg" alt="" />
+            </figure>
+          </div>
+          <section class="center">
+            <div class="columns is-7 is-two-thirds">
+              <button class="button is-primary" id="tomato">Tomato</button>
+              <button class="button is-danger" id="break">Break</button>
+              <button class="button is-warning" id="longBreak">
+                Long Break
+              </button>
+              <button class="button" id="pauseBtn">Pause</button>
+            </div>
+            <div class="columns">
+              <h1 class="has-background-white title is-1" id="countdown">
+                25:00
+              </h1>
+            </div>
+          </section>
         </div>
       </section>
+
+      <div class="container pb-2 pt-1">
+        <h1>Write your task below</h1>
+        <form action="/task" id="todoForm">
+          <input type="text" name="task" placeholder="Write your task here" />
+          <button>Add task</button>
+        </form>
+        <h2>To do:</h2>
+        <ul id="taskList"></ul>
+      </div>
     </div>
 
-  </section>
+    <audio src="telephone-ring-01a.wav"></audio>
 
-  <div class="container pb-5 pt-1">
-    <h1>Write your task below</h1>
-    <form action="/task" id="todoForm">
-      <input type="text" name="task" placeholder="Write your task here">
-      <button>Add task</button>
-    </form>
-    <h2>To do:</h2>
-    <ul id="taskList">
-    </ul>
-  </div>
-
-  <audio src="telephone-ring-01a.wav"></audio>
-
-  <script src="app.js "></script>
-</body>
-
+    <script src="app.js "></script>
+  </body>
 </html>
 
 <!-- Test with checkbox -->
