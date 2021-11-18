@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cronometro Tomate</title>
+    <title>Tomato Timer with Todo List</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
@@ -24,8 +24,6 @@
           <img
             src="tomato_logo.jpg"
             alt="tomato_logo"
-            width="112"
-            height="28"
           />
         </a>
         <a class="navbar-burger" id="burger">
@@ -36,58 +34,101 @@
       </div>
       <div class="navbar-menu" id="nav-links">
         <a class="navbar-item" href=""> Home </a>
-        <a class="navbar-item" href="faq.html"> FAQ </a>
-        <a class="navbar-item" href=""> Contact </a>
+        <a class="navbar-item" id="faq"> FAQ </a>
+        <a class="navbar-item" href="mailto:gfpretto@gmail.com"> Contact </a>
       </div>
     </nav>
 
-    <!-- old style -->
-    <div class="columns is-desktop center">
-      <section class="section is-medium pt-0 pb-2">
-        <div class="container">
-          <div class="columns is-desktop is-7 is-two-thirds is-centered">
-            <figure class="image">
-              <img src="resized-image-Promo.jpeg" alt="" />
+    <section class="section pt-0">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8-tablet has-text-centered">
+            <figure class="image mb-5 has-text-centered">
+              <img src="resized-image-Promo.jpeg" alt="timer image" />
             </figure>
+            <button class="button is-primary" id="tomato">Tomato</button>
+            <button class="button is-danger" id="break">Break</button>
+            <button class="button is-warning" id="longBreak">Long Break</button>
+            <button class="button" id="pauseBtn">Pause</button>
+            <h1 class="title is-1 mt-5" id="countdown">25:00</h1>
           </div>
-          <section class="center">
-            <div class="columns is-7 is-two-thirds">
-              <button class="button is-primary" id="tomato">Tomato</button>
-              <button class="button is-danger" id="break">Break</button>
-              <button class="button is-warning" id="longBreak">
-                Long Break
-              </button>
-              <button class="button" id="pauseBtn">Pause</button>
-            </div>
-            <div class="columns">
-              <h1 class="has-background-white title is-1" id="countdown">
-                25:00
-              </h1>
-            </div>
-          </section>
+          <div class="column is-4-tablet has-text-centered todo-list">
+            <h1 class="is-size-4-desktop is-size-5-tablet mb-2">
+              Write your task below
+            </h1>
+            <form action="/task" id="todoForm" autocomplete="off">
+              <input
+                class="is-size-6-tablet"
+                type="text"
+                name="task"
+                placeholder="Write your task here"
+              />
+            </form>
+            <h2 class="is-size-5-tablet mb-2">To do:</h2>
+            <ul class="is-size-5-tablet" id="taskList"></ul>
+          </div>
         </div>
-      </section>
-
-      <div class="container pb-2 pt-1">
-        <h1>Write your task below</h1>
-        <form action="/task" id="todoForm">
-          <input type="text" name="task" placeholder="Write your task here" />
-          <button>Add task</button>
-        </form>
-        <h2>To do:</h2>
-        <ul id="taskList"></ul>
       </div>
-    </div>
+    </section>
 
-    <audio src="telephone-ring-01a.wav"></audio>
+    <section class="section pt-0">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8-tablet has-text-centered">
+            <h1 class="title is-size-4-desktop is-size-5-tablet">Timer</h1>
+            <div class="info-text is-size-6-tablet">
+              <h2>Tomato button starts 25min timer</h2>
+              <h2>Break button starts 5min timer</h2>
+              <h2>Long button Break stars 10min timer</h2>
+              <h2>
+                Pause button stops the timer and when clicked again resumes the timer
+              </h2>
+            </div>
+          </div>
+          <div class="column is-4-tablet has-text-centered box">
+            <h1 class="title is-size-4-desktop is-size-5-tablet">To do list</h1>
+            <div class="info-text is-size-6-tablet">
+              <h2>One click to focus the task and count "tomatoes"</h2>
+              <h2>Double click to delete the task</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal" id="page-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <section class="modal-wrap">
+          <h1 class="title">What is the pomodoro technique:</h1>
+          <p>
+            A
+            <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
+              Pomodoro Technique
+            </a>
+            is a time management method developed by Francesco Cirillo in the
+            late 1980s. The technique uses a timer to set intervals, normaly of
+            25 minutes, with breaks of 5 minutes. The name comes from the
+            Italian word "pomodoro" which means tomato, in reference to the
+            tomato-shaped kitchen timer Cirillo used. The idea behind the
+            technique is to improve concentration and mental agility.
+          </p>
+
+          <h1 class="title mt-4">How does it work?</h1>
+          <ul>
+            We recomend to follow the instructions bellow:
+          </ul>
+          <li>Write down the task you want to perfom in the todo list</li>
+          <li>Click on the task(s) you want to focus</li>
+          <li>Start the timer clicking in the "Tomato" button</li>
+          <li>After the 1st tomato rings, take a break(exercise, walk...)</li>
+          <li>After 3 tomatoes take a long break</li>
+          <li>Once you came back from the long break start over again</li>
+        </section>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
     <script src="app.js "></script>
   </body>
 </html>
-
-<!-- Test with checkbox -->
-<!-- <input type="text">
-
-        <h2 id="taskList2">Your task</h2>
-        <input type="checkbox" name="checkList" id="taskList">
-        <label for="taskList3" id="taskList3">I want this</label> -->

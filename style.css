@@ -1,40 +1,110 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 .navbar-item img {
-    width: 54px;
-    max-height: 11rem;
+  width: 54px;
+  max-height: 11rem;
+  border: none;
+  background-color: none;
+  background-image: url("tomato_logo.jpg");
+}
+
+.navbar-item {
+  padding: 1rem;
+}
+
+.tomato-logo {
+  margin-left: 1rem;
+  background-image: url("tomato_logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 12px;
 }
 
 .image {
-    margin-right: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  display: block;
+  height: auto;
+  width: 70%;
 }
 
 .title.is-1 {
-    font-size: 6rem;
-    margin: 1rem 0;
+  font-size: 6rem;
+  margin: 1rem 0;
+}
+
+@media only screen and (max-width: 700px) {
+  #countdown {
+    font-size: 3rem;
+  }
+}
+
+#countdown {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .center {
-    text-align: center;
-    width: 410px;
-    margin: 3rem auto;
+  text-align: center;
+  width: 410px;
+  margin: 3rem auto;
 }
 
 .button {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .title.is-1 {
-    font-size: 6rem;
-    margin: 1rem auto;
+  font-size: 6rem;
+  margin: 1rem auto;
 }
 
 .navbar-menu {
-    justify-content: center;
+  justify-content: center;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
-.container{
+.container {
   display: grid;
+}
+
+.lateral {
+  display: flex;
+}
+
+.tomatoes {
+  margin-left: 1rem;
+  background-image: url("tomato_logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 12px;
+}
+
+.focused {
+  text-decoration: underline black;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.modal-wrap {
+  background-color: white;
+  padding: 70px;
+  line-height: 1.6;
+}
+
+.todo-list {
+  border-left: medium solid black;
+  background-color: #f1efef;
+}
+
+.card-info {
+  background-color: #f1efef;
+}
+
+p span {
+  display: block;
 }

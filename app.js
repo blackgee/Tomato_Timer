@@ -1,10 +1,28 @@
-//Responsive mobile menu
-const burgerIcon = document.querySelector("#burger")
-const navbarMenu = document.querySelector("#nav-links")
+//buttons to create event listeners and start/reset timer
+const btnTomato = document.querySelector("#tomato");
+const btnlongBreak = document.querySelector("#longBreak");
+const btnBreak = document.querySelector("#break");
+const btnPause = document.querySelector("#pauseBtn");
+const btnFaq = document.querySelector("#faq");
+const modal = document.querySelector("#page-modal");
+const close = document.querySelector(".modal-close")
 
-burgerIcon.addEventListener("click", () => {
-    navbarMenu.classList.toggle("is-active")
+btnFaq.addEventListener("click", () => {
+  modal.style.display = "block"
 });
+
+close.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target.className == "modal-background") {
+    modal.style.display = "none";
+ }
+});
+
+// select countdown element
+const countdownEl = document.querySelector("#countdown");
 
 // Def starting minutes and time for the countdown
 const startingMinutes = 25;
@@ -14,150 +32,134 @@ let time = startingMinutes * 60;
 let clear;
 
 //audio for the ring after timer goes to zero
-const ring = new Audio("telephone-ring-01a.wav");
+const ring = new Audio("ring.mp3");
 
-// select the and display the countdown 
-const countdownEl = document.querySelector("#countdown");
+//Responsive mobile menu
+const burgerIcon = document.querySelector("#burger");
+const navbarMenu = document.querySelector("#nav-links");
+
+burgerIcon.addEventListener("click", () => {
+  navbarMenu.classList.toggle("is-active");
+});
+
+// starting a var called tomato to track how many tomato timers were used
+let tomato = 0;
+
+//Changes the pauseBtn inner html to pause when called
+const pause = () => {
+  btnPause.innerHTML = "Pause";
+};
+
+// the func bellow avoid the countdown to add more intervals when you
+// click the button speeding the time. It clears the setInterval func
+const clearCount = () => {
+  if (clear !== undefined) {
+    clearInterval(clear);
+  }
+};
 
 //start the tomato timer with 25min
-const btnTomato = document.querySelector('#tomato');
-btnTomato.addEventListener('click', function() {
-    btnPause.innerHTML = 'Pause'
-    if (clear !== undefined)
-        clearInterval(clear)
-    time = 25 * 60;
-    clear = setInterval(updateCountdown, 1000);
+btnTomato.addEventListener("click", () => {
+  pause();
+  clearCount();
+  time = 25 * 60;
+  clear = setInterval(updateCountdown, 1000);
+  tomato = 1;
 });
 
 //start the short break of 5 min
-const btnBreak = document.querySelector('#break');
-btnBreak.addEventListener("click", function() {
-    btnPause.innerHTML = 'Pause'
-    if (clear !== undefined)
-        clearInterval(clear)
-    time = 5 * 60;
-    clear = setInterval(updateCountdown, 1000);
-})
-
-//start the long break of 10 min
-const btnlongBreak = document.querySelector('#longBreak');
-btnlongBreak.addEventListener("click", function() {
-    btnPause.innerHTML = 'Pause'
-    if (clear !== undefined)
-        clearInterval(clear)
-    time = 10 * 60;
-    clear = setInterval(updateCountdown, 1000);
-})
-
-// NEEDS FIX, should stop and display the current countdown time 
-const btnPause = document.querySelector("#pauseBtn");
-btnPause.addEventListener("click", function() {
-    if (clear === undefined) {
-        clear = setInterval(updateCountdown, 1000)
-        btnPause.innerHTML = 'Pause'
-    } else {
-        clearInterval(clear);
-        clear = undefined
-        btnPause.innerHTML = 'Resume'
-    }
-})
-
-// const cklTask = document.querySelector("#task");
-// cklTask.addEventListener("input", function() {
-//     cklTask.innerHTML = input.value;
-// })
-
-
-// function to update the Countdown and play audio when it goes to zero
-function updateCountdown() {
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    countdownEl.innerHTML = `${minutes}:${seconds}`;
-    time--;
-    if (time < 0) {
-        time = 0;
-        //console.log("ring")
-        play3Times();
-        clearInterval(clear);
-    }
-}
-
-function playSound(audio, numberOfTimes = 1, delay = 3000, firstTime = true) {
-    if (firstTime) {
-        audio.play();
-        console.log("ring1")
-    }
-    setTimeout(() => {
-        if (!firstTime) {
-            audio.play();
-            console.log("ring2")
-        }
-        numberOfTimes--;
-        if (numberOfTimes > 0) {
-            playSound(audio, numberOfTimes, delay, false);
-            console.log("ring3")
-        }
-    }, delay)
-}
-
-function play3Times() {
-    const audio = ring
-    playSound(audio, 4, 3000);
-}
-
-
-
-//to do list 
-const lis = document.querySelectorAll("li");
-for (let li of lis) {
-    li.addEventListener("click", function() {
-        li.remove();
-    })
-}
-
-const todoForm = document.querySelector('#todoForm');
-const taskList = document.querySelector('#taskList');
-todoForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const taskInput = todoForm.elements.task;
-    addTask(taskInput.value)
-    taskInput.value = '';
-
+btnBreak.addEventListener("click", () => {
+  pause();
+  clearCount();
+  time = 5 * 60;
+  clear = setInterval(updateCountdown, 1000);
 });
 
-const addTask = (task) => {
-    const newTask = document.createElement('li');
-    newTask.append(task);
-    taskList.append(newTask);
+//start the long break of 10 min
+btnlongBreak.addEventListener("click", () => {
+  pause();
+  clearCount();
+  time = 10 * 60;
+  clear = setInterval(updateCountdown, 1000);
+});
+
+// Stops and displays the current countdown time
+btnPause.addEventListener("click", () => {
+  if (clear === undefined) {
+    clear = setInterval(updateCountdown, 1000);
+    btnPause.innerHTML = "Pause";
+  } else {
+    clearInterval(clear);
+    clear = undefined;
+    btnPause.innerHTML = "Resume";
+  }
+});
+
+// function to update the Countdown and call endTimer
+const updateCountdown = () => {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  countdownEl.innerHTML = `${minutes}:${seconds}`;
+  time--;
+  endTimer();
 }
 
-taskList.addEventListener('click', function(e) {
-    e.target.nodeName === 'LI' && e.target.remove();
-})
+// Func to play audio when timer is = 0 and call addTomato func
+const endTimer = () => {
+  if (time < 0) {
+    time = 0;
+    clearInterval(clear);
+    ring.play();
+    if (tomato === 1) {
+      addTomato();
+      tomato = 0;
+    }
+  }
+};
 
-// NEEDS FIX AND TIME!!  Attempt to write the todo list with checkbox
+// Adds new tomatoes elements to the focused task in the todo list.
+const addTomato = () => {
+  const focused = document.querySelectorAll(".focused");
+  const tom = document.querySelectorAll(".tomatoes");
+  for (let i = 0; i < focused.length; i++) {
+    const tomatoes = document.createElement("span");
+      tomatoes.classList.add("tomatoes");
+      focused[i].append(tomatoes);
+  }
+}
 
-// const taskInput = document.querySelector("input");
-// const taskList = document.querySelector('#taskList3');
-// const elCheckbox = document.querySelector("#taskList")
+//todo list selectors
+const todoForm = document.querySelector("#todoForm");
+const taskList = document.querySelector("#taskList");
+const input = document.querySelector("input");
 
-// taskInput.addEventListener("input", function(e) {
-//     taskList.innerText = taskInput.value;
-//     const newTask = document.createElement("input");
-//     newTask.setAttribute("type", "checkbox");
+// create a submit event in the form to collect user input
+todoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const taskText = input.value;
+  addTask(taskText);
+  input.value = "";
+});
 
-//     newTask.setAttribute("nextElementSibling", "label")
-//     taskList.append(newTask)
-//     console.dir(newTask)
-// })
+// take the user input and create a li
+const addTask = (task) => {
+  const newTask = document.createElement("li");
+  newTask.classList.add("lateral");
+  newTask.append(task);
+  taskList.append(newTask);
+};
 
-// const usernameInput = document.querySelectorAll('input')[0];
-// const tweetInput = document.querySelectorAll('input')[1];
+// double click event to delete the task
+taskList.addEventListener("dblclick", (e) => {
+  e.target.nodeName === "LI" && e.target.remove();
+});
 
-// How to create a label exemple
-// var newlabel = document.createElement("Label");
-// newlabel.setAttribute("for", taskList);
-// newlabel.innerHTML = "Here goes the text";
-// parentDiv.appendChild(newlabel);
+//click event to focus in one or more tasks to count the tomatoes
+taskList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("focused")) {
+    e.target.classList.remove("focused");
+  } else {
+    e.target.nodeName === "LI" && e.target.classList.add("focused");
+  }
+});
