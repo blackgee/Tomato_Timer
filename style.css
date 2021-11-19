@@ -41,6 +41,13 @@ body {
   #countdown {
     font-size: 3rem;
   }
+  .resp-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 #countdown {

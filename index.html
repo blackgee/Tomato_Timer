@@ -21,10 +21,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
-          <img
-            src="tomato_logo.jpg"
-            alt="tomato_logo"
-          />
+          <img src="tomato_logo.jpg" alt="tomato_logo" />
         </a>
         <a class="navbar-burger" id="burger">
           <span></span>
@@ -46,10 +43,14 @@
             <figure class="image mb-5 has-text-centered">
               <img src="resized-image-Promo.jpeg" alt="timer image" />
             </figure>
-            <button class="button is-primary" id="tomato">Tomato</button>
-            <button class="button is-danger" id="break">Break</button>
-            <button class="button is-warning" id="longBreak">Long Break</button>
-            <button class="button" id="pauseBtn">Pause</button>
+            <div class="resp-buttons">
+              <button class="button is-primary" id="tomato">Tomato</button>
+              <button class="button is-danger" id="break">Break</button>
+              <button class="button is-warning" id="longBreak">
+                Long Break
+              </button>
+              <button class="button" id="pauseBtn">Pause</button>
+            </div>
             <h1 class="title is-1 mt-5" id="countdown">25:00</h1>
           </div>
           <div class="column is-4-tablet has-text-centered todo-list">
@@ -81,7 +82,8 @@
               <h2>Break button starts 5min timer</h2>
               <h2>Long button Break stars 10min timer</h2>
               <h2>
-                Pause button stops the timer and when clicked again resumes the timer
+                Pause button stops the timer and when clicked again resumes the
+                timer
               </h2>
             </div>
           </div>
